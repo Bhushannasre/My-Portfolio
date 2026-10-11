@@ -1,0 +1,92 @@
+@import "tailwindcss";
+
+/* Amiamie: only the three styles the site uses (Light, Regular, Italic) */
+@font-face {
+  font-family: "Amiamie";
+  src: url("/fonts/amiamie/woff2/Amiamie-Light.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Amiamie";
+  src: url("/fonts/amiamie/woff2/Amiamie-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Amiamie";
+  src: url("/fonts/amiamie/woff2/Amiamie-Italic.woff2") format("woff2");
+  font-weight: 300 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@theme {
+  --color-primary: #e5e5e0;
+  --color-DarkLava: #393632;
+  --color-SageGray: #8b8b73;
+  --color-gold: #cfa355;
+  --font-amiamie: "Amiamie", system-ui, sans-serif;
+
+  --animate-marquee: marquee 40s infinite linear;
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(calc(-100% - var(--gap)));
+    }
+  }
+}
+
+/* Lenis owns smooth scrolling; native smooth-scroll would fight it */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+body {
+  background: #e5e5e0;
+  color: black;
+  overflow-x: hidden;
+  font-family: var(--font-amiamie);
+}
+
+@utility clip-path {
+  clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);
+}
+
+@utility banner-text-responsive {
+  @apply text-[68px] sm:text-[118px] md:text-[126px] lg:text-[152px] leading-9 sm:leading-16 lg:leading-20;
+}
+
+@utility value-text-responsive {
+  @apply text-2xl md:text-[26px] lg:text-[32px];
+}
+
+@utility marquee-text-responsive {
+  @apply text-[28px] sm:text-[36px] lg:text-[42px];
+}
+
+@utility contact-text-responsive {
+  @apply text-[42px] sm:text-[52px] md:text-[62px] lg:text-[100px];
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+  }
+}
